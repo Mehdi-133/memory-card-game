@@ -8,36 +8,44 @@
             </head>
         <body>
 
-            <main>
+            <main class="game">
 
-                <h1>Memory game
+                <h1 class="game-title">Memory game
                 </h1>
-                <section>
-                    <p>moves: <span>0</span></p>
-                    <p>pairs: <span>0</span></p>
-                </section>
-                <section>
-                    <div>?</div>
-                    <div>?</div>
-                    <div>?</div>
-                    <div>?</div>
-                    <div>?</div>
-                    <div>?</div>
-                    <div>?</div>
-                    <div>?</div>
-                    <div>?</div>
-                    <div>?</div>
-                    <div>?</div>
-                    <div>?</div>
+                <section class="game-stats">
+                    <p class="stat">
+                        <span class="stat-label">Moves</span>
+                        <span class="stat-value">0</span>
+                    </p>
 
-                </section>
-                <section>
-                    <p>congrats u found all characters pairs</p>
-                </section>
-                <button>
-                    restart game
-                </button>
-            </main>
+                    <p class="stat">
+                        <span class="stat-label">Pairs</span>
+                        <span class="stat-value">0</span>
+                    </p>
+                    </section class="game-board" >
+                    <section>
+                        <div class="card">?</div>
+                        <div class="card">?</div>
+                        <div class="card">?</div>
+                        <div class="card">?</div>
+                        <div class="card">?</div>
+                        <div class="card">?</div>
+                        <div class="card">?</div>
+                        <div class="card">?</div>
+                        <div class="card">?</div>
+                        <div class="card">?</div>
+                        <div class="card">?</div>
+                        <div class="card">?</div>
 
-        </body>
-    </html>
+                    </section>
+                    <section class="victory-section">
+                        <p class="victory-message">congrats u found all
+                            characters pairs</p>
+                    </section>
+                    <button class="restart-button">
+                        restart game
+                    </button>
+                </main>
+
+            </body>
+        </html>
