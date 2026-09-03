@@ -72,3 +72,8 @@ const card = [
     alt: "anime character 6",
   },
 ];
+
+
+
+card.sort(() => Math.random() -0.5)
+console.log(card);
