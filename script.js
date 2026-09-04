@@ -74,6 +74,10 @@ const card = [
 ];
 
 const gameBoard = document.getElementById("game-board");
+const counter = document.getElementById("counter")
+
+const flippedCard = [];
+let pairFound = 0;
 
 function shuffleCard(card) {
   return card.sort(() => Math.random() - 0.5);
@@ -84,6 +88,7 @@ function createCards(card) {
   card.forEach((card) => {
     const cardElement = document.createElement("div");
     cardElement.classList.add("card");
+    cardElement.dataset.matchId = card.matchId;
     cardElement.innerHTML = `
         <img src = "${card.src}" alt = "${card.alt} ">`;
 
@@ -94,10 +99,15 @@ function createCards(card) {
 function faceUp(card) {
   card.addEventListener("click", () => {
     card.classList.add("flip");
-    // alert("test");
+    flippedCard.push(card);
     setTimeout(() => {
-        card.classList.remove("flip")
-    } , 1000)
+      if (flippedCard.length === 1) {
+        card.classList.remove("flip");
+        flippedCard.length = 0;
+      }
+    }, 1000);
+
+    match();
   });
 }
 
@@ -108,3 +118,23 @@ const cards = document.querySelectorAll(".game-board .card");
 cards.forEach((card) => {
   faceUp(card);
 });
+
+function match() {
+  if (flippedCard.length !== 2) {
+    return;
+  }
+  if (flippedCard[0].dataset.matchId === flippedCard[1].dataset.matchId) {
+    flippedCard[0].classList.add("matched");
+    flippedCard[1].classList.add("matched");
+    flippedCard.length = 0;
+    pairFound++
+    counter.textContent = pairFound
+  } else {
+    setTimeout(() => {
+      flippedCard[0].classList.remove("flip");
+      flippedCard[1].classList.remove("flip");
+      flippedCard.length = 0;
+    }, 1000);
+  }
+
+}
