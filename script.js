@@ -175,6 +175,10 @@ function congratsMessage() {
   );
 
   if (checkAllCard && popup) {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
     popup.classList.add("show");
   }
 }
@@ -190,7 +194,7 @@ function playAgain() {
 
 function setTimer() {
   if (timer) return;
-  setInterval(() => {
+  timer = setInterval(() => {
     seconds++;
     const minutes = Math.floor(seconds / 60);
     const showingSeconds = seconds % 60;
@@ -200,3 +204,5 @@ function setTimer() {
 }
 restartGame();
 playAgain();
+
+
