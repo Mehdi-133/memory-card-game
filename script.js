@@ -76,6 +76,7 @@ const card = [
 const gameBoard = document.getElementById("game-board");
 const counter = document.getElementById("counter");
 const eachMove = document.getElementById("eachMove");
+const restart = document.getElementById("restart")
 
 const flippedCard = [];
 let pairFound = 0;
@@ -152,3 +153,11 @@ function match() {
     }, 1000);
   }
 }
+
+function restartGame(){
+    restart.addEventListener("click" ,()  => {
+        location.reload()
+    })
+}
+
+restartGame()
