@@ -125,7 +125,12 @@ body {
 }
 
 .game-board div::before {
-  content: "M";
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: url("assets/images/a9b1c12353d7adab26e7011f0dee2a1d.jpg") center /
+    cover no-repeat;
+  display: block;
   position: absolute;
   top: 50%;
   left: 50%;
