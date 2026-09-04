@@ -95,6 +95,9 @@ function faceUp(card) {
   card.addEventListener("click", () => {
     card.classList.add("flip");
     // alert("test");
+    setTimeout(() => {
+        card.classList.remove("flip")
+    } , 1000)
   });
 }
 
