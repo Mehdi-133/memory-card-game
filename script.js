@@ -53,7 +53,7 @@ const card = [
     src: "assets/images/62f86deaebc9ca68ebe0ae08e9632ed8.jpg",
     alt: "anime character 5",
   },
-    {
+  {
     id: 10,
     matchId: 5,
     src: "assets/images/62f86deaebc9ca68ebe0ae08e9632ed8.jpg",
@@ -65,7 +65,7 @@ const card = [
     src: "assets/images/3893377047abed7a8c43d5189c2cff18.jpg",
     alt: "anime character 6",
   },
-    {
+  {
     id: 12,
     matchId: 6,
     src: "assets/images/3893377047abed7a8c43d5189c2cff18.jpg",
@@ -73,7 +73,22 @@ const card = [
   },
 ];
 
+const gameBoard = document.getElementById("game-board");
 
+function shuffleCard(card) {
+  return card.sort(() => Math.random() - 0.5);
+}
 
-card.sort(() => Math.random() -0.5)
-console.log(card);
+function createCards(card) {
+  shuffleCard(card);
+  card.forEach((card) => {
+    const cardElement = document.createElement("div");
+    cardElement.classList.add("card");
+    cardElement.innerHTML = `
+        <img src = "${card.src}" alt = "${card.alt} ">`;
+
+    gameBoard.appendChild(cardElement);
+  });
+}
+
+createCards(card);
