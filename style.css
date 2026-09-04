@@ -5,112 +5,186 @@
 }
 
 :root {
-  --bg: #f4f6ef;
-  --surface: #a6c0b3;
-  --surface-light: #548b8a;
-  --surface-matched: #fdfaf5;
-  --border: rgba(255, 255, 255, 0.4);
-  --border-matched: #eab04a;
-  --text: #2c2c2c;
-  --text-muted: #555555;
+  --bg: #f5f7f3;
+
+  --surface: #dfe9e3;
+  --surface-light: #789f93;
+  --surface-matched: #fffdf8;
+
+  --border: rgba(255, 255, 255, 0.75);
+  --border-matched: #e6b85c;
+
+  --text: #26332e;
+  --text-muted: #718078;
   --text-card: #ffffff;
-  --green: #59a86d;
+
+  --green: #68a58b;
+
+  --shadow-soft: 0 8px 24px rgba(45, 65, 57, 0.08);
+  --shadow-card: 0 5px 14px rgba(45, 65, 57, 0.10);
+  --shadow-hover: 0 10px 22px rgba(45, 65, 57, 0.14);
 }
 
 body {
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
+
   font-family: Inter, Arial, sans-serif;
-  background: var(--bg);
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(220, 235, 227, 0.65),
+      transparent 45%
+    ),
+    var(--bg);
+
   color: var(--text);
+
   display: flex;
   justify-content: center;
+
   position: relative;
 }
+
+/* =========================================
+   GAME CONTAINER
+   ========================================= */
 
 .game {
   width: min(900px, 95vw, 75dvh);
   height: 100%;
+
   padding: 2.5vh 0;
+
   display: flex;
   flex-direction: column;
+
   position: relative;
 }
 
+/* =========================================
+   TITLE
+   ========================================= */
+
 .game-title {
   margin-bottom: 2vh;
+
   text-align: center;
+
   font-size: clamp(20px, 3.5vh, 28px);
-  font-weight: 600;
+  font-weight: 700;
+
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+
   color: var(--text);
+
   flex-shrink: 0;
 }
+
+/* =========================================
+   GAME STATS
+   ========================================= */
 
 .game-stats {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   margin-bottom: 2vh;
   padding: 0 10px;
+
   flex-shrink: 0;
 }
 
 .stat {
-  color: var(--text);
+  color: var(--text-muted);
+
   font-size: clamp(14px, 2vh, 16px);
   font-weight: 500;
+
   display: flex;
   align-items: center;
+
   gap: 8px;
 }
 
 .stat-label {
   display: inline;
-  color: var(--text);
+
+  color: var(--text-muted);
   font-weight: 500;
 }
 
 .stat-value {
   display: inline;
+
   color: var(--text);
-  font-weight: 500;
+  font-weight: 700;
 }
+
+/* =========================================
+   GAME BOARD
+   ========================================= */
 
 .game-board {
   flex: 1;
   min-height: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
 
-  /* 3 rows to fit your 12 cards perfectly */
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
 
-  gap: clamp(6px, 1.5vh, 12px);
+  gap: clamp(8px, 1.5vh, 14px);
+
   perspective: 1200px;
-  background-color: var(--surface);
-  padding: clamp(8px, 2vh, 16px);
-  border-radius: 16px;
+
+  background: rgba(210, 225, 218, 0.75);
+
+  padding: clamp(10px, 2vh, 18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 12px 35px rgba(45, 65, 57, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
   position: relative;
 }
+
+/* =========================================
+   CARDS
+   ========================================= */
 
 .game-board div {
   width: 100%;
   height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   position: relative;
   overflow: hidden;
+
   border: 1.5px solid var(--border);
-  border-radius: 12px;
+
+  border-radius: 14px;
+
   background: var(--surface-light);
+
   color: var(--text-card);
+
   font-size: clamp(20px, 3vw, 24px);
   font-weight: 600;
+
   letter-spacing: 2px;
+
   cursor: pointer;
 
   transition:
@@ -120,54 +194,101 @@ body {
     background 0.25s ease,
     color 0.25s ease;
 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-card);
+
   transform-style: preserve-3d;
 }
 
+/* =========================================
+   CARD BACKGROUND IMAGE
+   ========================================= */
+
 .game-board div::before {
   content: "";
+
   width: 100%;
   height: 100%;
-  background: url("assets/images/a9b1c12353d7adab26e7011f0dee2a1d.jpg") center /
-    cover no-repeat;
+
+  background:
+    linear-gradient(
+      rgba(84, 139, 138, 0.15),
+      rgba(84, 139, 138, 0.15)
+    ),
+    url("assets/images/a9b1c12353d7adab26e7011f0dee2a1d.jpg")
+      center / cover no-repeat;
+
   display: block;
+
   position: absolute;
+
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
+
   font-size: clamp(40px, 8vh, 120px);
   font-weight: 800;
+
   color: rgba(255, 255, 255, 0.15);
+
   line-height: 1;
+
   pointer-events: none;
+
   z-index: 1;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.25s ease;
 }
 
 .game-board div span {
   z-index: 2;
+
   position: relative;
 }
 
+/* =========================================
+   CARD HOVER
+   ========================================= */
+
 .game-board div:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+
+  border-color: rgba(255, 255, 255, 0.95);
+
+  box-shadow: var(--shadow-hover);
 }
+
+.game-board div:hover::before {
+  transform: translate(-50%, -50%) scale(1.025);
+}
+
+/* =========================================
+   CARD IMAGE
+   ========================================= */
 
 .game-board div img {
   width: 100%;
   height: 100%;
+
   display: block;
+
   object-fit: cover;
+
   border-radius: inherit;
+
   position: relative;
+
   z-index: 3;
+
   opacity: 0;
 
   transition:
     transform 0.35s ease,
     opacity 0.35s ease;
 }
+
 .game-board div.flip img {
   opacity: 1;
 }
@@ -176,20 +297,25 @@ body {
   transform: scale(1.035);
 }
 
+/* =========================================
+   MATCHED CARD
+   ========================================= */
+
 .game-board div.matched {
   background: var(--surface-matched);
+
   border: 2px solid var(--border-matched);
+
   color: transparent;
-  box-shadow: 0 0 15px rgba(234, 176, 74, 0.6);
+
+  box-shadow:
+    0 0 0 2px rgba(230, 184, 92, 0.08),
+    0 8px 20px rgba(230, 184, 92, 0.18);
 }
 
 .game-board div.matched::before {
   display: none;
 }
-
-/* .game-board div.flip::after {
-  display: block;
-} */
 
 .game-board div.flip::before {
   display: none;
@@ -199,26 +325,43 @@ body {
   opacity: 1;
 }
 
+/* =========================================
+   VICTORY SECTION
+   ========================================= */
+
 .victory-section {
   display: none;
 
   position: absolute;
+
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
 
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(220, 230, 225, 0.9) 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(240, 246, 242, 0.96)
+    );
 
-  backdrop-filter: blur(4px);
-  padding: 20px 40px;
-  border-radius: 8px;
+  backdrop-filter: blur(10px);
+
+  padding: 24px 40px;
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+
+  border-radius: 16px;
+
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+  box-shadow:
+    0 20px 50px rgba(35, 50, 44, 0.16),
+    0 4px 12px rgba(35, 50, 44, 0.06);
+
   z-index: 20;
+
   width: 90%;
   max-width: 400px;
 }
@@ -229,45 +372,84 @@ body {
 
 .victory-message {
   color: var(--text);
+
   font-size: 22px;
   font-weight: 700;
+
   margin-bottom: 5px;
 }
 
+/* =========================================
+   RESTART BUTTON
+   ========================================= */
+
 .restart-button {
   display: block;
+
   margin: 2vh auto 0;
+
   padding: clamp(10px, 1.5vh, 14px) 40px;
-  border: none;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
   border-radius: 25px;
+
   background: var(--surface-light);
+
   color: var(--text-card);
+
   font-size: clamp(14px, 2vh, 16px);
+
   font-weight: 600;
+
   text-transform: uppercase;
   letter-spacing: 1px;
+
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(84, 139, 138, 0.3);
+
+  box-shadow:
+    0 5px 12px rgba(84, 139, 138, 0.20);
+
   flex-shrink: 0;
 
   transition:
     opacity 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .restart-button:hover {
   background: var(--surface-light);
-  opacity: 0.9;
-  box-shadow: 0 4px 10px rgba(84, 139, 138, 0.5);
+
+  opacity: 0.92;
+
+  box-shadow:
+    0 7px 16px rgba(84, 139, 138, 0.28);
+
   transform: translateY(-2px);
 }
 
 .restart-button:active {
   transform: translateY(0);
+
+  box-shadow:
+    0 3px 8px rgba(84, 139, 138, 0.20);
 }
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
 
 @media (max-width: 700px) {
   .game {
     width: min(95vw, 80dvh);
+  }
+
+  .game-board {
+    border-radius: 16px;
+  }
+
+  .game-board div {
+    border-radius: 11px;
   }
 }
