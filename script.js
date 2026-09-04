@@ -77,7 +77,8 @@ const gameBoard = document.getElementById("game-board");
 const counter = document.getElementById("counter");
 const eachMove = document.getElementById("eachMove");
 const restart = document.getElementById("restart");
-const popup = document.querySelector("congratPopup");
+const popup = document.querySelector("#congratPopup");
+const playAgainBtn = document.getElementById("playAgainBtn");
 
 const flippedCard = [];
 let pairFound = 0;
@@ -94,11 +95,11 @@ function createCards(card) {
     const img = document.createElement("img");
     cardElement.classList.add("card");
     cardElement.dataset.matchId = card.matchId;
-    img.src = card.src
-    img.alt = card.alt
+    img.src = card.src;
+    img.alt = card.alt;
 
     gameBoard.appendChild(cardElement);
-    cardElement.appendChild(img)
+    cardElement.appendChild(img);
   });
 }
 
@@ -168,9 +169,17 @@ function congratsMessage() {
   const checkAllCard = cards.every((card) =>
     card.classList.contains("matched"),
   );
-  if (checkAllCard) {
+
+  if (checkAllCard && popup) {
     popup.classList.add("show");
   }
+}
+
+if (playAgainBtn) {
+  playAgainBtn.addEventListener("click", () => {
+    popup.classList.remove("show");
+    location.reload();
+  });
 }
 
 restartGame();
