@@ -21,7 +21,7 @@
   --green: #68a58b;
 
   --shadow-soft: 0 8px 24px rgba(45, 65, 57, 0.08);
-  --shadow-card: 0 5px 14px rgba(45, 65, 57, 0.10);
+  --shadow-card: 0 5px 14px rgba(45, 65, 57, 0.1);
   --shadow-hover: 0 10px 22px rgba(45, 65, 57, 0.14);
 }
 
@@ -33,11 +33,7 @@ body {
   font-family: Inter, Arial, sans-serif;
 
   background:
-    radial-gradient(
-      circle at top,
-      rgba(220, 235, 227, 0.65),
-      transparent 45%
-    ),
+    radial-gradient(circle at top, rgba(220, 235, 227, 0.65), transparent 45%),
     var(--bg);
 
   color: var(--text);
@@ -210,12 +206,9 @@ body {
   height: 100%;
 
   background:
-    linear-gradient(
-      rgba(84, 139, 138, 0.15),
-      rgba(84, 139, 138, 0.15)
-    ),
-    url("assets/images/a9b1c12353d7adab26e7011f0dee2a1d.jpg")
-      center / cover no-repeat;
+    linear-gradient(rgba(84, 139, 138, 0.15), rgba(84, 139, 138, 0.15)),
+    url("assets/images/a9b1c12353d7adab26e7011f0dee2a1d.jpg") center / cover
+      no-repeat;
 
   display: block;
 
@@ -339,12 +332,11 @@ body {
 
   transform: translate(-50%, -50%);
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.97),
-      rgba(240, 246, 242, 0.96)
-    );
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.97),
+    rgba(240, 246, 242, 0.96)
+  );
 
   backdrop-filter: blur(10px);
 
@@ -407,8 +399,7 @@ body {
 
   cursor: pointer;
 
-  box-shadow:
-    0 5px 12px rgba(84, 139, 138, 0.20);
+  box-shadow: 0 5px 12px rgba(84, 139, 138, 0.2);
 
   flex-shrink: 0;
 
@@ -423,8 +414,7 @@ body {
 
   opacity: 0.92;
 
-  box-shadow:
-    0 7px 16px rgba(84, 139, 138, 0.28);
+  box-shadow: 0 7px 16px rgba(84, 139, 138, 0.28);
 
   transform: translateY(-2px);
 }
@@ -432,8 +422,30 @@ body {
 .restart-button:active {
   transform: translateY(0);
 
-  box-shadow:
-    0 3px 8px rgba(84, 139, 138, 0.20);
+  box-shadow: 0 3px 8px rgba(84, 139, 138, 0.2);
+}
+
+.congrat-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.congrat-popup.show {
+  display: flex;
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
 }
 
 /* =========================================
