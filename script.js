@@ -74,7 +74,7 @@ const card = [
 ];
 
 const gameBoard = document.getElementById("game-board");
-const counter = document.getElementById("counter")
+const counter = document.getElementById("counter");
 
 const flippedCard = [];
 let pairFound = 0;
@@ -98,6 +98,15 @@ function createCards(card) {
 
 function faceUp(card) {
   card.addEventListener("click", () => {
+    if (flippedCard.includes(card)) {
+      return;
+    }
+    if (card.classList.contains("matched")) {
+      return;
+    }
+    if (flippedCard.length >= 2) {
+      return;
+    }
     card.classList.add("flip");
     flippedCard.push(card);
     setTimeout(() => {
@@ -127,8 +136,8 @@ function match() {
     flippedCard[0].classList.add("matched");
     flippedCard[1].classList.add("matched");
     flippedCard.length = 0;
-    pairFound++
-    counter.textContent = pairFound
+    pairFound++;
+    counter.textContent = pairFound;
   } else {
     setTimeout(() => {
       flippedCard[0].classList.remove("flip");
@@ -136,5 +145,4 @@ function match() {
       flippedCard.length = 0;
     }, 1000);
   }
-
 }
