@@ -79,10 +79,13 @@ const eachMove = document.getElementById("eachMove");
 const restart = document.getElementById("restart");
 const popup = document.querySelector("#congratPopup");
 const playAgainBtn = document.getElementById("playAgainBtn");
+const timerGame = document.getElementById("timerGame");
 
 const flippedCard = [];
 let pairFound = 0;
 let moves = 0;
+let timer;
+let seconds = 0;
 
 function shuffleCard(card) {
   return card.sort(() => Math.random() - 0.5);
@@ -105,6 +108,7 @@ function createCards(card) {
 
 function faceUp(card) {
   card.addEventListener("click", () => {
+    setTimer();
     if (flippedCard.includes(card)) {
       return;
     }
@@ -175,11 +179,24 @@ function congratsMessage() {
   }
 }
 
-if (playAgainBtn) {
-  playAgainBtn.addEventListener("click", () => {
-    popup.classList.remove("show");
-    location.reload();
-  });
+function playAgain() {
+  if (playAgainBtn) {
+    playAgainBtn.addEventListener("click", () => {
+      popup.classList.remove("show");
+      location.reload();
+    });
+  }
 }
 
+function setTimer() {
+  if (timer) return;
+  setInterval(() => {
+    seconds++;
+    const minutes = Math.floor(seconds / 60);
+    const showingSeconds = seconds % 60;
+
+    timerGame.textContent = `${String(minutes).padStart(2, "0")}:${String(showingSeconds).padStart(2, "0")}`;
+  }, 1000);
+}
 restartGame();
+playAgain();
