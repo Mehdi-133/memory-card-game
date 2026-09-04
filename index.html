@@ -4,48 +4,37 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>memory card game</title>
-        <link rel="stylesheet " href="style.css"
-            </head>
-        <body>
+        <link rel="stylesheet " href="style.css">
+    </head>
+    <body>
 
-            <main class="game">
+        <main class="game">
 
-                <h1 class="game-title">Memory game
-                </h1>
-                <section class="game-stats">
-                    <p class="stat">
-                        <span class="stat-label">Moves</span>
-                        <span class="stat-value">0</span>
-                    </p>
+            <h1 class="game-title">Memory game
+            </h1>
+            <section class="game-stats">
+                <p class="stat">
+                    <span class="stat-label">Moves</span>
+                    <span class="stat-value" id="eachMove">0</span>
+                </p>
 
-                    <p class="stat">
-                        <span class="stat-label">Pairs</span>
-                        <span class="stat-value">0</span>
-                    </p>
-                    </section class="game-board" >
-                    <section>
-                        <div class="card">?</div>
-                        <div class="card">?</div>
-                        <div class="card">?</div>
-                        <div class="card">?</div>
-                        <div class="card">?</div>
-                        <div class="card">?</div>
-                        <div class="card">?</div>
-                        <div class="card">?</div>
-                        <div class="card">?</div>
-                        <div class="card">?</div>
-                        <div class="card">?</div>
-                        <div class="card">?</div>
+                <p class="stat">
+                    <span class="stat-label">Pairs</span>
+                    <span class="stat-value" id="counter">0</span>
+                </p>
+            </section>
+            <section class="game-board" id="game-board">
+            </section>
+            <section class="victory-section">
+                <p class="victory-message">congrats u found all
+                    characters pairs</p>
+            </section>
+            <button class="restart-button" id = "restart">
+                restart game
+            </button>
+        </main>
+        <script src="script.js"></script>
 
-                    </section>
-                    <section class="victory-section">
-                        <p class="victory-message">congrats u found all
-                            characters pairs</p>
-                    </section>
-                    <button class="restart-button">
-                        restart game
-                    </button>
-                </main>
+    </body>
 
-            </body>
-        </html>
+</html>
