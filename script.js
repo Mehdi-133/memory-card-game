@@ -75,9 +75,11 @@ const card = [
 
 const gameBoard = document.getElementById("game-board");
 const counter = document.getElementById("counter");
+const eachMove = document.getElementById("eachMove");
 
 const flippedCard = [];
 let pairFound = 0;
+let moves = 0;
 
 function shuffleCard(card) {
   return card.sort(() => Math.random() - 0.5);
@@ -109,12 +111,12 @@ function faceUp(card) {
     }
     card.classList.add("flip");
     flippedCard.push(card);
-    setTimeout(() => {
-      if (flippedCard.length === 1) {
-        card.classList.remove("flip");
-        flippedCard.length = 0;
-      }
-    }, 1000);
+    // setTimeout(() => {
+    //   if (flippedCard.length === 1) {
+    //     card.classList.remove("flip");
+    //     flippedCard.length = 0;
+    //   }
+    // }, 1000);
 
     match();
   });
@@ -132,6 +134,10 @@ function match() {
   if (flippedCard.length !== 2) {
     return;
   }
+
+  moves++;
+  eachMove.textContent = moves;
+
   if (flippedCard[0].dataset.matchId === flippedCard[1].dataset.matchId) {
     flippedCard[0].classList.add("matched");
     flippedCard[1].classList.add("matched");
