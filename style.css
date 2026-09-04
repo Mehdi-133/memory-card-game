@@ -168,6 +168,9 @@ body {
     transform 0.35s ease,
     opacity 0.35s ease;
 }
+.game-board div.flip img {
+  opacity: 1;
+}
 
 .game-board div:hover img {
   transform: scale(1.035);
@@ -181,6 +184,14 @@ body {
 }
 
 .game-board div.matched::before {
+  display: none;
+}
+
+/* .game-board div.flip::after {
+  display: block;
+} */
+
+.game-board div.flip::before {
   display: none;
 }
 

@@ -91,6 +91,17 @@ function createCards(card) {
   });
 }
 
-
+function faceUp(card) {
+  card.addEventListener("click", () => {
+    card.classList.add("flip");
+    // alert("test");
+  });
+}
 
 createCards(card);
+
+const cards = document.querySelectorAll(".game-board .card");
+
+cards.forEach((card) => {
+  faceUp(card);
+});
